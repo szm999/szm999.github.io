@@ -1,6 +1,83 @@
-{
-    "title":"舞墨亭",
-    "subTitle":"这世界上三角形的人都有，何必奇怪呢",
-    "avatarUrl":"https://d9458.datatransfer.to/i/16455/xqz4gdky4npk.png",
-    "GMEEK_VERSION":"last"
-}
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>舞墨亭</title>
+  <style>
+    /* 全局样式 */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    /* 页面容器与边距 */
+    .page-container {
+      max-width: 1200px; /* 可根据需要调整页面最大宽度 */
+      margin: 0 auto; /* 自动水平居中 */
+      padding: 70px 30px; /* 上下外边距70px，左右外边距30px */
+      box-sizing: border-box;
+    }
+
+    /* 头部标题 */
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 36px;
+      font-weight: bold;
+      color: #007BFF; /* 主题色，可自定义 */
+    }
+
+    .header h2 {
+      margin-top: ½em;
+      font-size: 24px;
+      font-style: italic;
+      color: #6c757d; /* 辅助色，可自定义 */
+    }
+
+    /* 博文头像 */
+    .avatar {
+      display: block;
+      margin: 0 auto;
+      max-width: 200px;
+      height: auto;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 以下部分为实际博文内容的样式设定，这里仅提供一个基本框架，具体内容请替换或补充 */
+
+    .post-content {
+      margin-bottom: ⅓em;
+    }
+
+    .post-content p {
+      margin-bottom: 1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <div class="header">
+      <h1>舞墨亭</h1>
+      <h2>这世界上三角形的人都有，何必奇怪呢</h2>
+    </div>
+
+    <img src="https://d9458.datatransfer.to/i/16455/xqz4gdky4npk.png" alt="博主头像" class="avatar">
+
+    <!-- 博文正文开始 -->
+    <div class="post-content">
+      <!-- 这里放置您的博文内容 -->
+    </div>
+    <!-- 博文正文结束 -->
+
+  </div>
+</body>
+</html>
