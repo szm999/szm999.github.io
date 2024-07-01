@@ -4,7 +4,7 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
     <link rel="icon" href="https://github.com/szm999/szm999.github.io/raw/main/%E8%80%81%E9%82%B5.png"><script>
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
@@ -74,8 +74,10 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/391b07d85132c06f6da5b0b91937f30cfa60cff4a3704e3aea59f3c51e225daf/68747470733a2f2f64313234312e646174617472616e736665722e746f2f692f31363531392f6279693433357475723671322e6a7067"><img src="https://camo.githubusercontent.com/391b07d85132c06f6da5b0b91937f30cfa60cff4a3704e3aea59f3c51e225daf/68747470733a2f2f64313234312e646174617472616e736665722e746f2f692f31363531392f6279693433357475723671322e6a7067" alt="" data-canonical-src="https://d1241.datatransfer.to/i/16519/byi435tur6q2.jpg" style="max-width: 100%;"></a><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/bf69fd80e52ecb68c99cc832bf19c7de58558865eddd3115cc5f5fb0d1a80eea/68747470733a2f2f64313234312e646174617472616e736665722e746f2f692f31363531392f697a6470666768656f3237672e6a7067"><img src="https://camo.githubusercontent.com/bf69fd80e52ecb68c99cc832bf19c7de58558865eddd3115cc5f5fb0d1a80eea/68747470733a2f2f64313234312e646174617472616e736665722e746f2f692f31363531392f697a6470666768656f3237672e6a7067" alt="" data-canonical-src="https://d1241.datatransfer.to/i/16519/izdpfgheo27g.jpg" style="max-width: 100%;"></a></p>
 <p>　　</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
+
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
 <div class="comments" id="comments"></div>
+
 </div>
     <div id="footer">Copyright © <span id="year"></span><a href="https://szm999.github.io"> 醉舞 </a>
 <p>
@@ -130,6 +132,8 @@ console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5p
 <script>
 document.getElementById("pathHome").setAttribute("d",IconList["home"]);
 document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
 
 function openComments(){
     cm=document.getElementById("comments");

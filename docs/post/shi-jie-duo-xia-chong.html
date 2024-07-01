@@ -4,7 +4,7 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
     <link rel="icon" href="https://github.com/szm999/szm999.github.io/raw/main/%E8%80%81%E9%82%B5.png"><script>
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
@@ -73,8 +73,10 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <div class="markdown-body" id="postBody"><p>　　我知道每个人的成长经历和生活经历都不同，所以每一个人的想法以及执念自然也不同。所以，不用强求。夏虫不可语于冰，是因为这只虫子在夏天出生也在夏天死去。跟它说冬天它一定不会理解。陶渊明如果生活在现代，那他一定是一个一无是处的人，不是因为他没钱，而是因为他的性格导致他一定不会有一个远大的前途。这个社会，只适合那些投机钻营之辈，或许秦桧之流生错了时代，如果生在现代，那简直不得了！<br>
 　　所以，不要因为自己的前途而悔恨。因为你或许是历史上正确的那个人。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
+
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
 <div class="comments" id="comments"></div>
+
 </div>
     <div id="footer">Copyright © <span id="year"></span><a href="https://szm999.github.io"> 醉舞 </a>
 <p>
@@ -129,6 +131,8 @@ console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5p
 <script>
 document.getElementById("pathHome").setAttribute("d",IconList["home"]);
 document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
 
 function openComments(){
     cm=document.getElementById("comments");

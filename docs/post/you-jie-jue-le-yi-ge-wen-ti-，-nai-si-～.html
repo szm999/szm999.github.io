@@ -4,7 +4,7 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
     <link rel="icon" href="https://github.com/szm999/szm999.github.io/raw/main/%E8%80%81%E9%82%B5.png"><script>
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
@@ -75,8 +75,10 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 　　再一个，国内的这些网站想要发布什么东西是需要审核的，一旦出现一些敏感词就过不了！这也是让我极不满意的一点！而且我觉得国内对于言论的审核太极端了！让我感觉跟文字狱一样！当然，审核是要审核的，但就不能用一些比较聪明的方法？比如现在人工智能大模型那么牛，就不能用来进行网络信息审查？非得去限制什么词！关键是这他妈的也没用啊！中文同音字那么多，随便找一个代替就行，难道还能将所有汉字都禁了啊？<br>
 　　将人工智能用到网络审查上势在必行！否则再过多少年，就没有汉字可用了！</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
+
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
 <div class="comments" id="comments"></div>
+
 </div>
     <div id="footer">Copyright © <span id="year"></span><a href="https://szm999.github.io"> 醉舞 </a>
 <p>
@@ -131,6 +133,8 @@ console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5p
 <script>
 document.getElementById("pathHome").setAttribute("d",IconList["home"]);
 document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
 
 function openComments(){
     cm=document.getElementById("comments");
