@@ -2,8 +2,6 @@
 "title":"醉舞",
 "subTitle":"这世界上三角形的人都有，何必奇怪呢",
 "avatarUrl":"https://github.com/szm999/szm999.github.io/raw/main/%E8%80%81%E9%82%B5.png",
-    "allHead":"<script src='https://blog.meekdai.com/assets/GmeekVercount.js'></script>",
-    "script":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script>",
-    "script":"<script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>",
+    "script":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>",
 "GMEEK_VERSION":"last"
 }
