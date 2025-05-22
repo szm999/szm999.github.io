@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="{{ blogBase['nightTheme'] }}" data-light-theme="{{ blogBase['dayTheme'] }}" lang={% if blogBase['i18n']=='CN' %}"zh-CN"{% elif blogBase['i18n']=='RU' %}"ru"{% else -%}"en"{%- endif -%}>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {{ blogBase['primerCSS'] }}
+    {{ blogBase['allHead'] }}
+    <link rel="stylesheet" href="/css/custom-styles.css">
+    <script src="https://unpkg.com/lunr/lunr.min.js"></script>
+    <link rel="icon" href="{{ blogBase['faviconUrl'] }}">
+    {%- if blogBase['themeMode']=='manual' -%}
+    <script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+    {%- endif -%}
+    {% block head %}{% endblock %}
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px; /* font-size, font-family, line-height, max-width, margin, padding REMOVED */ }
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;} /* Keep display:flex, other properties will be overridden or complemented by custom-styles.css */
+#footer {margin-top:64px; text-align: center;font-size: small;} /* Will be overridden or complemented */
+</style>
+{% block style %}{% endblock %}
+
+<body>
+    <div class="main-container"> <!-- New container -->
+        <div id="header">
+            {% block header %}{% endblock %}
+            <!-- Search Container Added Here -->
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search blog posts...">
+                <div id="searchResults" class="search-results-dropdown">
+                    <!-- Search results will be populated here -->
+                </div>
+            </div>
+        </div>
+        <div id="content">{% block content %}{% endblock %}</div>
+        <div id="footer">{% include 'footer.html' %}</div>
+    </div> <!-- End new container -->
+</body>
+<script>
+var IconList={{ IconList }};
+var utterancesLoad=0;
+{% if blogBase['themeMode']=='manual' %}
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+{%- endif %}
+console.log("
+ %c Gmeek {{ blogBase['GMEEK_VERSION'] }} https://github.com/Meekdai/Gmeek 
+","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+<script>
+// Search Implementation (ensure this is placed after Lunr.js is loaded)
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+let postIndex;
+let postsData = []; // To store post details including URL
+
+if (searchInput && searchResults) { // Ensure elements exist before adding listeners
+    // Fetch post data and initialize Lunr index
+    fetch('/postList.json') // Assumes postList.json is in the root of docs/
+        .then(response => response.json())
+        .then(data => {
+            const postKeys = Object.keys(data).filter(k => k !== 'labelColorDict');
+            postsData = postKeys.map(key => data[key]);
+
+            postIndex = lunr(function () {
+                this.ref('postUrl'); 
+                this.field('postTitle', { boost: 10 });
+                this.field('labels');
+                
+                postsData.forEach(function (doc) {
+                    let processedDoc = {...doc}; 
+                    if (processedDoc.labels && Array.isArray(processedDoc.labels)) {
+                        processedDoc.labels = processedDoc.labels.join(' ');
+                    }
+                    this.add(processedDoc);
+                }, this);
+            });
+        })
+        .catch(error => console.error('Error fetching or processing postList.json for search:', error));
+
+    searchInput.addEventListener('keyup', function (event) {
+        const query = event.target.value.toLowerCase();
+        searchResults.innerHTML = ''; 
+
+        if (query.length < 2) {
+            searchResults.style.display = 'none';
+            return;
+        }
+
+        if (postIndex) {
+            const results = postIndex.search(query);
+            if (results.length > 0) {
+                const ul = document.createElement('ul');
+                results.forEach(function (result) {
+                    const post = postsData.find(p => p.postUrl === result.ref);
+                    if (post) {
+                        const li = document.createElement('li');
+                        const a = document.createElement('a');
+                        a.href = '/' + post.postUrl; 
+                        a.textContent = post.postTitle;
+                        li.appendChild(a);
+                        ul.appendChild(li);
+                    }
+                });
+                searchResults.appendChild(ul);
+            } else {
+                const noResultsP = document.createElement('p');
+                noResultsP.classList.add('no-results');
+                noResultsP.textContent = 'No results found.';
+                searchResults.appendChild(noResultsP);
+            }
+            searchResults.style.display = 'block';
+        }
+    });
+
+    document.addEventListener('click', function(event) {
+        if (searchResults.style.display === 'block' && !searchInput.contains(event.target) && !searchResults.contains(event.target)) {
+            searchResults.style.display = 'none';
+        }
+    });
+
+    searchInput.addEventListener('focus', function() {
+        if (searchInput.value.length >= 2 && searchResults.children.length > 0) {
+            searchResults.style.display = 'block';
+        }
+    });
+}
+</script>
+{% block script %}{% endblock %}
+</html>
