@@ -1,0 +1,336 @@
+/* General Reset / Base */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.6;
+    color: #333; /* Default light mode text color */
+    background-color: #fff; /* Default light mode background */
+    margin: 0;
+    padding: 0;
+}
+
+/* Container for consistent width */
+.main-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Header Styling */
+#header {
+    display: flex;
+    justify-content: space-between; /* Align items nicely */
+    align-items: center;
+    padding: 15px 0; /* Adjust padding */
+    border-bottom: 1px solid #eee; /* Lighter border */
+    margin-bottom: 20px;
+}
+
+#header .title-left .avatar {
+    width: 50px; /* Slightly smaller avatar */
+    height: 50px;
+}
+
+#header .title-left a.blogTitle {
+    font-size: 28px; /* Adjust title size */
+    font-weight: bold;
+    text-decoration: none;
+    color: inherit;
+}
+
+#header .title-right a.btn, #header .title-right button.btn {
+    color: #555; /* Icon button color */
+}
+#header .title-right a.btn:hover, #header .title-right button.btn:hover {
+    color: #007bff; /* Icon button hover color */
+}
+
+/* Footer Styling */
+#footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9em;
+    color: #777;
+    border-top: 1px solid #eee;
+}
+
+#footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+#footer a:hover {
+    text-decoration: underline;
+}
+
+/* Links */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+}
+.postTitle { /* From post.html */
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+
+/* Dark Mode (Basic Example - Gmeek handles theme switching JS) */
+html[data-color-mode="dark"] body {
+    color: #ccc;
+    background-color: #1a1a1a;
+}
+html[data-color-mode="dark"] #header, 
+html[data-color-mode="dark"] #footer {
+    border-color: #333;
+}
+html[data-color-mode="dark"] a {
+    color: #58a6ff;
+}
+html[data-color-mode="dark"] #header .title-left a.blogTitle,
+html[data-color-mode="dark"] #header .title-right a.btn,
+html[data-color-mode="dark"] #header .title-right button.btn {
+    color: #ccc;
+}
+html[data-color-mode="dark"] #header .title-right a.btn:hover, 
+html[data-color-mode="dark"] #header .title-right button.btn:hover,
+html[data-color-mode="dark"] #footer a:hover {
+    color: #88c0ff;
+}
+
+/* === Added in this step: SideNav and Markdown Body Styles === */
+
+/* SideNav from plist.html */
+.SideNav {
+    border: 1px solid #eee; /* Match footer/header border */
+    border-radius: 6px; /* Optional: rounded corners */
+    overflow: hidden; /* For rounded corners if children have backgrounds */
+    margin-bottom: 20px; /* Added spacing below SideNav */
+}
+.SideNav-item {
+    padding: 15px; /* Increase padding */
+    border-bottom: 1px solid #eee; /* Separator for items */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s ease-in-out;
+}
+.SideNav-item:last-child {
+    border-bottom: none; /* No border for the last item */
+}
+.SideNav-item:hover {
+    background-color: #f9f9f9; /* Hover effect */
+}
+.SideNav-item .listTitle { /* Adjusted from .listTitle to be more specific */
+    font-weight: 500;
+    font-size: 1.1em;
+    color: #333;
+    overflow: hidden; /* Copied from original plist.html style */
+    white-space: nowrap; /* Copied from original plist.html style */
+    text-overflow: ellipsis; /* Copied from original plist.html style */
+    max-width: 100%; /* Copied from original plist.html style */
+}
+.SideNav-item .listLabels {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between labels */
+    white-space: nowrap; /* Copied from original plist.html style */
+}
+.SideNav-item .Label { /* Adjusted from .Label to be more specific */
+    font-size: 0.8em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: #fff; /* Copied from original plist.html .SideNav-item .Label */
+}
+.SideNav-item .listLabels object { /* Copied from original plist.html style */
+    max-height: 16px;
+    max-width: 24px;
+}
+.SideNav-icon{ /* Copied from original plist.html style */
+    margin-right: 16px;
+}
+
+
+html[data-color-mode="dark"] .SideNav {
+    border-color: #333;
+}
+html[data-color-mode="dark"] .SideNav-item {
+    border-color: #333;
+}
+html[data-color-mode="dark"] .SideNav-item:hover {
+    background-color: #2a2a2a;
+}
+html[data-color-mode="dark"] .SideNav-item .listTitle {
+    color: #ccc;
+}
+/* Note: .Label color in dark mode will inherit from its background in plist.html, which is fine. */
+
+/* Markdown Body from post.html */
+.markdown-body {
+    font-size: 16px; /* Base content font size */
+    line-height: 1.7; /* Improved readability */
+}
+.markdown-body h1, .markdown-body h2, .markdown-body h3 {
+    border-bottom: 1px solid #eee; /* Separator for headings */
+    padding-bottom: 0.3em;
+    margin-top: 1.8em; /* Increased from default for better separation */
+}
+.markdown-body p {
+    margin-bottom: 1.2em;
+}
+.markdown-body blockquote {
+    border-left: 3px solid #007bff;
+    padding-left: 15px;
+    margin-left: 0;
+    color: #555;
+    background-color: #f9f9f9; /* Light background for blockquote */
+}
+.markdown-body pre { /* Code blocks */
+    background-color: #f5f5f5; /* Lighter than default dark for code */
+    padding: 15px;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+.markdown-body code:not(pre code) { /* Inline code */
+    background-color: #f0f0f0; /* Lighter than code blocks */
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+html[data-color-mode="dark"] .markdown-body h1,
+html[data-color-mode="dark"] .markdown-body h2,
+html[data-color-mode="dark"] .markdown-body h3 {
+    border-color: #333;
+}
+html[data-color-mode="dark"] .markdown-body blockquote {
+    border-left-color: #58a6ff;
+    color: #bbb;
+    background-color: #2a2a2a; /* Darker background for blockquote */
+}
+html[data-color-mode="dark"] .markdown-body pre {
+    background-color: #222; /* Darker for code blocks */
+}
+html[data-color-mode="dark"] .markdown-body code:not(pre code) {
+    background-color: #333; /* Darker for inline code */
+}
+
+/* Styles for .copy-feedback from post.html - making it global */
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px; /* Adjust as needed relative to its container */
+    right: 10px; /* Adjust as needed relative to its container */
+    color: var(--color-fg-on-emphasis); /* Ensure these CSS variables are defined or replace them */
+    background-color: var(--color-fg-muted); /* Ensure these CSS variables are defined or replace them */
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+    z-index: 10; /* Ensure it's above other elements */
+}
+
+/* Ensure Primer CSS variables are available or define fallbacks if not always present */
+:root {
+    --color-fg-on-emphasis: #ffffff; /* Example fallback */
+    --color-fg-muted: #586069;       /* Example fallback */
+    --color-success-fg: #22863a;     /* Example fallback */
+}
+html[data-color-mode="dark"] {
+    --color-fg-on-emphasis: #000000; /* Example dark fallback */
+    --color-fg-muted: #8b949e;       /* Example dark fallback */
+    --color-success-fg: #3fb950;     /* Example dark fallback */
+}
+
+/* === Added for Search Functionality === */
+/* Search Box Styling */
+.search-container {
+    position: relative; 
+    margin-left: auto; /* Attempts to push it to the right in a flex container */
+}
+
+#header { /* Ensure header items are vertically aligned */
+    align-items: center;
+}
+
+#searchInput {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    min-width: 180px; /* Adjust as needed */
+}
+
+.search-results-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%; 
+    min-width: 250px; /* Ensure dropdown is wide enough */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top: none; 
+    border-radius: 0 0 4px 4px;
+    padding: 0;
+    margin-top: 2px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000; /* Ensure dropdown is on top */
+}
+
+.search-results-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-results-dropdown li a {
+    display: block;
+    padding: 10px 12px;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+.search-results-dropdown li:last-child a {
+    border-bottom: none;
+}
+
+.search-results-dropdown li a:hover {
+    background-color: #f5f5f5;
+}
+
+.search-results-dropdown .no-results {
+    padding: 10px 12px;
+    color: #777;
+}
+
+/* Dark mode for search */
+html[data-color-mode="dark"] #searchInput {
+    background-color: #333;
+    border-color: #555;
+    color: #ccc;
+}
+html[data-color-mode="dark"] .search-results-dropdown {
+    background-color: #2a2a2a;
+    border-color: #444;
+}
+html[data-color-mode="dark"] .search-results-dropdown li a {
+    color: #ccc;
+    border-color: #444;
+}
+html[data-color-mode="dark"] .search-results-dropdown li a:hover {
+    background-color: #383838;
+}
+html[data-color-mode="dark"] .search-results-dropdown .no-results {
+    color: #888;
+}
